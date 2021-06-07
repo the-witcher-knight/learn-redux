@@ -114,7 +114,7 @@ console.log(capitalizeMessage(message));
 
 Store hoạt động như 1 kho chứa state, có cung cấp các cách để `dispatch action` - gửi action. Và nó gọi reducer khi `action` được gửi đi. Gần như mọi ứng dụng redux chỉ có 1 store.
 
-![](https://res.cloudinary.com/practicaldev/image/fetch/s--m5BdPzhS--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://i.imgur.com/riadAin.gif)
+![](https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
 1. store khởi tạo state vơi giá trị mặc đinh.
 2. view hiển thị giao diện.
