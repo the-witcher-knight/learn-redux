@@ -8,7 +8,7 @@ Table of contents
   1.5. [Immutable Update và Pure Functions](./Lesson01/README.md#immutable_update_and_pure_function)\
   1.6. [Store](./Lesson01/README.md#store)
 
-2. [Core redux API]()
+2. [Core redux API](./Lesson02/README.md)
 
 3. [Connect to React with Redux]()
 
