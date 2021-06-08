@@ -126,23 +126,90 @@ const recipesReducer = (state = initialState, action) => {
 };
 
 const store = createStore(recipesReducer);
-
-/* DO NOT DELETE */
-printTests();
-function printTests() {
-  store.dispatch(loadData());
-  console.log('Initial State after loading data');
-  console.log(store.getState());
-  console.log();
-  store.dispatch(addRecipe(allRecipesData[0]));
-  store.dispatch(addRecipe(allRecipesData[1]));
-  store.dispatch(setSearchTerm('cheese'));
-  console.log("After favoriting Biscuits and Bulgogi and setting the search term to 'cheese'")
-  console.log(store.getState());
-  console.log();
-  store.dispatch(removeRecipe(allRecipesData[1]));
-  store.dispatch(clearSearchTerm());
-  console.log("After un-favoriting Bulgogi and clearing the search term:")
-  console.log(store.getState());
-}
 ```
+
+# Reducer Composition
+
+Đối với những ứng dụng lớn nên tạo reducer riêng `sliceReducer` cho từng slice trong state để dễ quản lý. Sau cùng, được gọi trong một `rootReducer`.
+
+Và `initialState` cũng nên được chia thành những `initialSlice` tương ứng với mỗi slice.
+
+Cập nhật ví dụ ở trên:
+
+```javascript
+const initialAllRecipes = [];
+const allRecipesReducer = (allRecipes = initialAllRecipes, action) => {
+  switch(action.type){
+    case 'allRecipes/loadData':
+      return action.payload;
+    default:
+      return allRecipes;
+  }
+}
+
+const initialSearchTerm = '';
+const searchTermReducer = (searchTerm = initialSearchTerm, action) => {
+  switch(action.type){
+    case 'searchTerm/setSearchTerm':
+      return action.payload;
+    case 'searchTerm/clearSearchTerm':
+      return '';
+    default:
+      return searchTerm;
+  }
+}
+
+const initialFavoriteRecipes = [];
+const favoriteRecipesReducer = (favoriteRecipes = initialFavoriteRecipes, action) => {
+  switch(action.type){
+    case 'favoriteRecipes/addRecipe':
+      return [...favoriteRecipes, action.payload];
+    case 'favoriteRecipes/removeRecipe':
+      return favoriteRecipes.filter(recipe => recipe.id != action.payload.id);
+    default:
+      return favoriteRecipes;
+  }
+}
+
+// Tạo rootReducer
+const rootReducer = (state = {}, action) => {
+  const state = {
+    allRecipes: allRecipesReducer(state.allRecipes, action),
+    favoriteRecipes: favoriteRecipesReducer(state.favoriteRecipes, action),
+    searchTerm: searchTermReducer(state.searchTerm, action)
+  };
+
+  return state;
+}
+
+const store = createStore(rootReducer);
+```
+
+# Combine Reducers
+
+Như ví dụ trên, ta đã lưu trữ các `slice reducer` vào 1 đối tượng và trả về bởi hàm `rootReducer()`. 
+
+Tuy nhiên, Redux cung cấp `combineReducers()` để làm việc này thay ta.
+
+```javascript
+const reducers = {
+  allRecipes: allRecipesReducer,
+  favoriteRecipes: favoriteRecipesReducer,
+  searchTerm: searchTermReducer
+}
+
+const rootReducer = combineReducers(reducers);
+
+const store = createStore(rootReducer);
+```
+
+hoặc ta có thể viết ngắn gọn:
+
+```javascript
+const store = createStore(combineReducers({
+  allRecipes: allRecipesReducer,
+  favoriteRecipes: favoriteRecipesReducer,
+  searchTerm: searchTermReducer,
+}))
+```
+
