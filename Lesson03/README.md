@@ -121,3 +121,17 @@ Ví dụ:
 ```javascript
 const dispatch = useDispatch();
 ```
+
+# Tổng kết 
+
+`react-redux` library cho các components trong ứng dụng react kết nối tới redux store một cách dễ dàng:
+
+- components `<Provider>` bao xung quanh root component để các component bên trong có thể access tới `redux store` mà không cần dùng `props drilling`.
+
+- `Selector` là một hàm thuần được sử dụng để truy cập tới một phần hoặc toàn bộ state trong Redux store.
+
+- `useSelector` lấy `state` thông qua selector. Nó phải được gọi trong component.
+
+- `useSelector` *subscribe* components để data lấy về từ selector. React sẽ re-renders các component đó khi `selected data` thay đổi.
+
+- `useDispatch` trả về tham chiếu của `Redux store dispatch`.
