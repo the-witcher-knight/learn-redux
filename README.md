@@ -10,7 +10,10 @@ Table of contents
 
 2. [Core redux API](./Lesson02/README.md)
 
-3. [Connect to React with Redux]()
+3. [Connect to React with Redux](./Lesson03/README.md)\
+  3.1. [Selector](./Lesson03/README.md/#selector)\
+  3.2. [useSelector() hook](./Lesson03/README.md#useSelector)\
+  3.3. [useDispatch() hook](./Lesson03/README.md#useDispatch)
 
 4. [Refactor with Redux Toolkit]()
 
