@@ -2,19 +2,60 @@
 
 # Tổng quan
 
-## Giới thiệu
+## Xem nhanh
 
-Redux còn tồn tại nhiều vấn đề:
+### Tạo nhanh 1 slice với `createSlice()`
 
-- Cầu hình store còn quá phức tạp
+nhận vào một đối tượng
 
-- Cần phải cài thêm nhiều package để redux hữu dụng
+```javascript
+{
+  name: 'nameSlice',
+  initialState: object | array | string,
+  reducer: {
+    actionNameSlice: (state, action) => {
+      // không cần dùng Immutable Update
+      return object | array | string; // same type với state để đúng là pure function
+    },
+    ...state
+  }
+}
+```
 
-- Redux cần nhiều boilerplate code
+tạo ra một đối tượng có dạng
 
-- Viết các hàm Immutable Update dễ gây ra lỗi.
+```javascript
+{
+  name: string,
+  reducer: (state, action) => newState,
+  actions: {
+    actionNameSlice: (payload) => ({type: 'nameSlice/actionNameSlice', payload}),
+    ...
+  }
+}
+```
 
-Vì vậy, cần dùng `redux-toolkit`
+từ đó lấy được `actions`, `reducer`
+
+```javascript
+// Lấy Actions
+const { action1NameSlice, action2NameSlice, ... } = nameSlice.actions;
+// Lấy reducer
+const nameSliceReducer = nameSlice.reducer;
+```
+
+### Chuyển đổi 1 store với `configureStore()`
+
+```javascript
+const rootReducer = {
+  nameSlice: nameSliceReducer,
+  ...
+}
+
+const store = configureStore({
+  reducer: rootReducer;
+});
+```
 
 ## Cách cài
 
@@ -127,11 +168,7 @@ với `redux toolkit` ta dùng:
 
 ```javascript
 export default const store = configureStore({
-  reducer: {
-    allRecipe: allReciperReducer,
-    searchTerm: searchTermReducer,
-    favoriteRecipeReducer: favoriteRecipeReducer
-  }
+  reducer: rootReducer // rootRecuder ở trên
 })
 ```
 
