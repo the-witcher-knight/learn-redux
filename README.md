@@ -23,6 +23,6 @@ Table of contents
     4.3.2. [Return Reducer](./Lesson04/README.md#return_reducer)\
    4.4. [using "configureStore"](./Lesson04/README.md#configureStore)
 
-5. [Async Action with Middleware and Thunks]()
+5. [Async Action with Middleware and Thunks](./Lesson05/README.md)
 
 Learn in [https://www.codecademy.com/learn/learn-redux](https://www.codecademy.com/learn/learn-redux)
