@@ -123,7 +123,7 @@ const loadRecipes = () => {
 
 Cách làm việc của `redux-thunk` là kiểm tra xem các đối số được chuyển tới `dispatch`. Nếu `dispatch` nhận **_một hàm_** thì `middleware` sẽ gọi nó, nếu nhận một đối tượng thuần thì nó sẽ được pass vào `reducer`.
 
-Source code:
+Source code, Xem bản mới nhất tại [link git](https://github.com/reduxjs/redux-thunk/blob/master/src/index.js)
 
 ```javascript
 function createThunkMiddleware(extraArgument) {
