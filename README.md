@@ -23,6 +23,10 @@ Table of contents
     4.3.2. [Return Reducer](./Lesson04/README.md#return_reducer)\
    4.4. [using "configureStore"](./Lesson04/README.md#configureStore)
 
-5. [Async Action with Middleware and Thunks](./Lesson05/README.md)
+5. [Async Action với Middleware và Thunks](./Lesson05/README.md)\
+   5.1. [Giới thiệu về thunk](./Lesson05/README.md#thunk)\
+   5.2. [redux-thunk](./Lesson05/README.md#redux-thmdk)\
+   5.3. [Viết thunk trong redux](./Lesson05/README.md#write-thunk-in-redux)\
+   5.4. [Source code](./Lesson05/README.md#source-code)
 
 Learn in [https://www.codecademy.com/learn/learn-redux](https://www.codecademy.com/learn/learn-redux)

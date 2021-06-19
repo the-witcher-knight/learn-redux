@@ -45,7 +45,7 @@ store.dispatch({
 
 `thunk` là một hàm bậc cao `higher-order` để kết thúc quá trình tính toán mà chúng ta muốn thực hiện sao này.
 
-Ví dụ:
+Ví dụ, một hàm `thunk`
 
 ```javascript
 const remindMeTo = (task) => {
